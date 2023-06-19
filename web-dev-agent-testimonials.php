@@ -261,11 +261,6 @@ class WedDevAgentTestimonials {
 		      $details= (array) get_post_meta( get_the_ID(),'_wda_testimonial_details_meta_key', true );
                ?>
                <li>
-                  <?php
-                  if(has_post_thumbnail()):?>
-                     <!-- <img src="<?php the_post_thumbnail_url('small'); ?>"/> -->
-                  <?php endif; ?>
-                  <!-- <h3><?php echo get_the_title();?></h3> -->
                   <p>"<?php echo get_the_content();?>"</p>
                   <?php // check details exist before rendering ?>
 
