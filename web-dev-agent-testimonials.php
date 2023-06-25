@@ -43,8 +43,9 @@ class WedDevAgentTestimonials {
    public function create_testimonial_post_type() {
 
       $labels = array(
-         'name' => __('Testimonials','web-dev-agent'),
-         'singular_name' =>  __('Testimonial','web-dev-agent')
+         'name' => __('WDA Testimonials','web-dev-agent'),
+         'singular_name' =>  __('WDA Testimonial','web-dev-agent'),
+         'menu_name' => 'Testimonials',
       );
       $args = array(
          'labels' => $labels,
@@ -157,7 +158,6 @@ class WedDevAgentTestimonials {
          
          <?php _e('Features','wda-dev-agent_packages');?></h3>
       
-         <!-- to do : create in-form styling css rules -->
          <div style="display:flex;flex-direction:column;">
 
             <label for="_wda_testimonial_metabox_name">
@@ -263,8 +263,6 @@ class WedDevAgentTestimonials {
                <li>
                   <p>"<?php echo get_the_content();?>"</p>
                   <?php // check details exist before rendering ?>
-
-                  <!-- to do : apply styles to classes then rollout to archive & single -->
                   <h5 style="margin-bottom:0;"><?php echo isset($details['name']) ? $details['name'] : '';?></h5>
                   <p style="color:grey;margin-top:0;">
                      <?php echo isset($details['position']) ? $details['position'] : '';?>,
