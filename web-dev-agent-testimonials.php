@@ -74,34 +74,34 @@ class WedDevAgentTestimonials {
    //
    public function enqueue_assets() 
    {
-      wp_enqueue_style(
-         'wda_outline',
-         plugin_dir_url( __FILE__ ) . 'css/outline.css',
-         array(),
-         1,
-         'all'
-      );  
-      wp_enqueue_style(
-         'wda_outline_layouts',
-         plugin_dir_url( __FILE__ ) . 'css/outline-layouts.css',
-         array(),
-         1,
-         'all'
-      );  
-      wp_enqueue_style(
-         'wda_outline_custom_props',
-         plugin_dir_url( __FILE__ ) . 'css/outline-custom-props.css',
-         array(),
-         1,
-         'all'
-      );  
-      wp_enqueue_style(
-         'wda_outline_utilities',
-         plugin_dir_url( __FILE__ ) . 'css/outline-utilities.css',
-         array(),
-         1,
-         'all'
-      ); 
+      // wp_enqueue_style(
+      //    'wda_outline',
+      //    plugin_dir_url( __FILE__ ) . 'css/outline.css',
+      //    array(),
+      //    1,
+      //    'all'
+      // );  
+      // wp_enqueue_style(
+      //    'wda_outline_layouts',
+      //    plugin_dir_url( __FILE__ ) . 'css/outline-layouts.css',
+      //    array(),
+      //    1,
+      //    'all'
+      // );  
+      // wp_enqueue_style(
+      //    'wda_outline_custom_props',
+      //    plugin_dir_url( __FILE__ ) . 'css/outline-custom-props.css',
+      //    array(),
+      //    1,
+      //    'all'
+      // );  
+      // wp_enqueue_style(
+      //    'wda_outline_utilities',
+      //    plugin_dir_url( __FILE__ ) . 'css/outline-utilities.css',
+      //    array(),
+      //    1,
+      //    'all'
+      // ); 
       // wp_enqueue_script(
       //    'web-dev-agent',
       //    plugin_dir_url( __FILE__ ) . 'js/web-dev-agent.js',
@@ -262,13 +262,13 @@ class WedDevAgentTestimonials {
                ?>
                <li>
                   <p>"<?php echo get_the_content();?>"</p>
-                  <?php // check details exist before rendering ?>
-                  <h5 style="margin-bottom:0;"><?php echo isset($details['name']) ? $details['name'] : '';?></h5>
-                  <p style="color:grey;margin-top:0;">
+                  <div><h5 style="padding:0;"><?php echo isset($details['name']) ? $details['name'] : '';?></h5>
+                     <p  style="padding:0;text-align:center;">
                      <?php echo isset($details['position']) ? $details['position'] : '';?>,
-                     <?php echo isset($details['company']) ? $details['company'] : '';?></p>
-                  <p><?php echo isset($details['website']) ? $details['website'] : '';?></p>
+                     <?php echo isset($details['company']) ? $details['company'] : '';?><br>
+                  <a style="font-size:.9rem;" href="<?php echo isset($details['website']) ? $details['website'] : '';?>"><?php echo isset($details['website']) ? $details['website'] : '';?></a></p>
                   <p><?php echo get_post_meta( get_the_ID(), 'wda_testimonial_tagline', true );?></p>
+               </div>
                </li>
             <?php
          }
