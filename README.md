@@ -5,4 +5,4 @@
  
 Registers 'Testimonial' Custom Post Type and provides shortcode '[testimonials]' for displaying on front-end.
 
-[vist Web Dev Agent Theme site](https://web-dev-agent.netlify.app/)
+[visit Web Dev Agent Theme site](https://web-dev-agent.netlify.app/)
