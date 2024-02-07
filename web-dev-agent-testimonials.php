@@ -23,6 +23,7 @@ class WedDevAgentTestimonials {
 
       // assets
       add_action('wp_enqueue_scripts',array($this,'enqueue_assets'));
+      add_action('admin_enqueue_scripts', array($this,'enqueue_admin_assets'));
 
       // 'edit post' page
 		add_action('add_meta_boxes', array( $this,'add_testimonial_meta_box')); 
@@ -71,43 +72,12 @@ class WedDevAgentTestimonials {
    //
    // assets
    //
-   public function enqueue_assets() 
-   {
-      // wp_enqueue_style(
-      //    'wda_outline',
-      //    plugin_dir_url( __FILE__ ) . 'css/outline.css',
-      //    array(),
-      //    1,
-      //    'all'
-      // );  
-      // wp_enqueue_style(
-      //    'wda_outline_layouts',
-      //    plugin_dir_url( __FILE__ ) . 'css/outline-layouts.css',
-      //    array(),
-      //    1,
-      //    'all'
-      // );  
-      // wp_enqueue_style(
-      //    'wda_outline_custom_props',
-      //    plugin_dir_url( __FILE__ ) . 'css/outline-custom-props.css',
-      //    array(),
-      //    1,
-      //    'all'
-      // );  
-      // wp_enqueue_style(
-      //    'wda_outline_utilities',
-      //    plugin_dir_url( __FILE__ ) . 'css/outline-utilities.css',
-      //    array(),
-      //    1,
-      //    'all'
-      // ); 
-      // wp_enqueue_script(
-      //    'web-dev-agent',
-      //    plugin_dir_url( __FILE__ ) . 'js/web-dev-agent.js',
-      //    array('jquery'),
-      //    1,
-      //    true
-      // );
+   public function enqueue_assets() {
+
+   }   
+   public function enqueue_admin_assets() {
+      wp_enqueue_style('wda_custom_wp_admin_css',plugin_dir_url( __FILE__ ) . 'css/wda-admin-style.css',array(),1,'all'); 
+      // wp_enqueue_style( 'wda_custom_wp_admin_css' );
    }
    
 
@@ -123,7 +93,7 @@ class WedDevAgentTestimonials {
 
 			add_meta_box(
 				'wda_testimonial',
-				__( 'Tagline', 'textdomain' ),
+				__( 'Testimonial', 'textdomain' ),
 				array( $this, 'render_testimonial_meta_box' ),
 				$post_types,
 				'advanced',
@@ -153,48 +123,49 @@ class WedDevAgentTestimonials {
 		$details = wp_parse_args( $saved_details, $default_details ); // Merge the two in case any fields don't exist in the saved data
 
       ?>
-      <h3>
-         
-         <?php _e('Features','wda-dev-agent_packages');?></h3>
-      
-         <div style="display:flex;flex-direction:column;">
 
-            <label for="_wda_testimonial_metabox_name">
-               Name
-            </label>
+      <h3><?php _e('Customer Details','wda-dev-agent_packages');?></h3>      
+
+      <label class="wda_label">
+         <span class="wda_title">Name</span>
             <input
-               type="text"
                id="_wda_custom_metabox_name"
                name="_wda_testimonial_array_fields[name]"
-               value="<?php echo esc_attr( $details['name'] ); ?>">
-            
-            <label for="_wda_testimonial_metabox_name">
-               Position
-            </label>
-            <input
+               class="wda_input"
                type="text"
+               value="<?php echo esc_attr( $details['name'] ); ?>">
+      </label>
+            
+      <label class="wda_label">
+         <span class="wda_title">Position</span>
+            <input
                id="_wda_custom_metabox_position"
                name="_wda_testimonial_array_fields[position]"
-               value="<?php echo esc_attr( $details['position'] ); ?>">
-
-            <label for="_wda_testimonial_metabox_company">
-               Company
-            </label>
-            <input
+               class="wda_input"
                type="text"
+               value="<?php echo esc_attr( $details['position'] ); ?>">
+      </label>
+
+      <label class="wda_label">
+         <span class="wda_title">Company</span>
+            <input
                id="_wda_custom_metabox_company"
                name="_wda_testimonial_array_fields[company]"
-               value="<?php echo esc_attr( $details['company'] ); ?>">
-            
-            <label for="_wda_testimonial_metabox_website">
-               Website
-            </label>
-            <input
+               class="wda_input"
                type="text"
+               value="<?php echo esc_attr( $details['company'] ); ?>">
+      </label>
+            
+      <label class="wda_label">
+         <span class="wda_title">Website</span>
+            <input
                id="_wda_custom_metabox_website"
                name="_wda_testimonial_array_fields[website]"
+               class="wda_input"
+               type="text"
                value="<?php echo esc_attr( $details['website'] ); ?>">
-         </div>
+      </label>
+
       <?php
    }
 
@@ -260,6 +231,7 @@ class WedDevAgentTestimonials {
 		      $details= (array) get_post_meta( get_the_ID(),'_wda_testimonial_details_meta_key', true );
                ?>
                <li>
+                  <h5><?php echo get_the_title();?></h5>
                   <p>"<?php echo get_the_content();?>"</p>
                   <div><h5 style="padding:0;"><?php echo isset($details['name']) ? $details['name'] : '';?></h5>
                      <p  style="padding:0;text-align:center;">
