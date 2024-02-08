@@ -234,7 +234,7 @@ class WedDevAgentTestimonials {
                   <h5><?php echo get_the_title();?></h5>
                   <p>"<?php echo get_the_content();?>"</p>
                   <div><h5 style="padding:0;"><?php echo isset($details['name']) ? $details['name'] : '';?></h5>
-                     <p  style="padding:0;text-align:center;">
+                     <p style="padding:0;text-align:center;">
                      <?php echo isset($details['position']) ? $details['position'] : '';?>,
                      <?php echo isset($details['company']) ? $details['company'] : '';?><br>
                   <a style="font-size:.9rem;" href="<?php echo isset($details['website']) ? $details['website'] : '';?>"><?php echo isset($details['website']) ? $details['website'] : '';?></a></p>
